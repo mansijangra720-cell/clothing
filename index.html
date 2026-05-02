@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blush & Bloom | Girls Clothing</title>
+  <meta name="description" content="Blush & Bloom - Elegant, soft pastel clothing for girls. Shop modern dresses, tops, and ethnic wear.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <a href="#home" class="logo">Blush<span>&</span>Bloom</a>
+    
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    
+    <div class="nav-icons">
+      <button class="icon-btn" onclick="toggleWishlist()">
+        <i class="far fa-heart"></i>
+        <span class="badge" id="wishlistCount">0</span>
+      </button>
+      <button class="icon-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    
+    <!-- Home Section -->
+    <section id="home">
+      <div class="blob"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Soft. Elegant.<br>Beautiful.</h1>
+          <p>Discover our new collection of pastel dresses, stylish tops, and elegant ethnic wear designed exclusively for girls who love to bloom.</p>
+          <a href="#shop" class="primary-btn">Shop Now</a>
+        </div>
+        <div class="hero-image">
+          <img src="assets/hero.png" alt="Blush & Bloom Hero Image">
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop">
+      <h2 class="section-title"><span>Our Collection</span></h2>
+      
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="dress">Dresses</button>
+        <button class="filter-btn" data-filter="top">Tops</button>
+        <button class="filter-btn" data-filter="ethnic">Ethnic Wear</button>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected via JS -->
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title"><span>Our Story</span></h2>
+      <div class="about-content">
+        <div class="about-img">
+          <img src="assets/dress1.png" alt="About Blush & Bloom">
+        </div>
+        <div class="about-text">
+          <h3>Blooming with Confidence</h3>
+          <p>At Blush & Bloom, we believe that every girl deserves to feel beautiful, confident, and comfortable in what she wears. Our designs are inspired by the delicate beauty of blooming flowers and the soft, soothing tones of pastel colors.</p>
+          <p>From breezy summer dresses to elegant ethnic wear, each piece is thoughtfully crafted using high-quality fabrics that are gentle on the skin. We are committed to sustainable fashion and ethical manufacturing practices.</p>
+          <a href="#shop" class="primary-btn" style="margin-top: 1rem; display: inline-block;">Explore Collection</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title"><span>Get in Touch</span></h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>We'd love to hear from you!</h3>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>123 Blossom Avenue, Fashion District, NY 10001</p>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <p>+1 (555) 123-4567</p>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <p>hello@blushandbloom.com</p>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="primary-btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="overlay" id="overlay" onclick="closeSidebars()"></div>
+  
+  <div class="sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <h3>Your Cart</h3>
+      <button class="close-btn" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sidebar-content" id="cartContent">
+      <!-- Cart items injected via JS -->
+    </div>
+    <div class="sidebar-footer">
+      <div class="total-row">
+        <span>Total:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">Secure Checkout</button>
+    </div>
+  </div>
+
+  <!-- Wishlist Sidebar -->
+  <div class="sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <h3>Your Wishlist</h3>
+      <button class="close-btn" onclick="toggleWishlist()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sidebar-content" id="wishlistContent">
+      <!-- Wishlist items injected via JS -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Blush & Bloom. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
